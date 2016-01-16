@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <body onload = "myTimer()">
+    
+    <p>A script on this page starts this clock:</p>
+    
+    <p id="demo"></p>
+    
+    <script>
+      var myVar = setInterval(myTimer, 1000);
+      var min = 1;
+      var sec = 10;
+      
+      function myTimer()
+      {
+      if(sec > 0)
+      {
+      sec--;
+      }
+      else
+      {
+      sec = 0;
+      min --;
+      }
+      if(min == 0 && sec == 0)
+      {
+      window.open("finish.html", "_self");
+      
+      document.getElementById("demo").innerHTML = min + " minutes and " + sec + " seconds";
+      }
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  		<title>Quiz</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/text.css">
+		<link rel="stylesheet" type="text/css" href="css/960_12_col.css">
+    
+    <script>
+        
+      var min = 0;
+      var sec = 60;
+      
+      function myTimer()
+      {
+      if(min == 0 && sec == 1)
+      {
+      window.open("finish.html", "_self");
+      }
+      
+      if(sec > 1)
+      {
+      sec--;
+      }
+      else
+      {
+      sec = 10;
+      min --;
+      }
+      document.getElementById("demo").innerHTML = min + " minutes and " + sec + " seconds";
+      }
+      
+      var questions;
+      var options;
+      var qno = 0;
+
+      function now()
+      {
+      questions.splice(-1, 1);
+      options.splice(-1, 1);
+      document.getElementById("b1").disabled = false;
+      document.getElementById("end").disabled = false;
+      document.getElementById("b3").disabled = true;
+      document.getElementById("b2").disabled = true;
+      document.getElementById("p1").innerHTML = questions[qno];
+      var option = options[qno].split("^^");
+      for(i = 0; i<4; i++)
+		      {
+		      var x = document.createElement("INPUT");
+		      x.setAttribute("type", "radio");
+		      x.setAttribute("onclick", "sessionStorage.setItem('"+qno+"', '"+i+"')");
+		      x.setAttribute("name", "rbutton");
+		      var y = document.createElement("INPUT");
+		      y.setAttribute("type", "label");
+		      y.setAttribute("value", option[i]);
+		      document.getElementById("p2").appendChild(x);
+		      document.getElementById("p2").appendChild(y);
+		      }
+		      }	   
+
+
+      
+
+      function next()
+      {
+		      qno++;
+		      
+		      
+      if(qno == 9)
+      {
+      document.getElementById("b1").disabled = true;
+		      }
+		      document.getElementById("p2").innerHTML = "";
+		      document.getElementById("b2").disabled = false;
+		      document.getElementById("p1").innerHTML = questions[qno];
+		      var option = options[qno].split("^^");
+		      
+		      for(i = 0; i<4; i++)
+		      {
+		      var x = document.createElement("INPUT");
+		      x.setAttribute("type", "radio");
+		      x.setAttribute("onclick", "sessionStorage.setItem('"+qno+"', '"+i+"')");
+		      x.setAttribute("name", "rbutton");
+		      var y = document.createElement("INPUT");
+		      y.setAttribute("type", "label");
+				      y.setAttribute("value", option[i]);
+				           if(sessionStorage.getItem(qno) != "null" && sessionStorage.getItem(qno) == i)
+				      {
+				      x.setAttribute("checked", "true");
+				      }
+		      document.getElementById("p2").appendChild(x);
+				      document.getElementById("p2").appendChild(y);
+				    
+				      
+		      }
+				      
+      
+		      }
+
+      
+      function prev()
+				      {
+				      document.getElementById("p2").innerHTML = "";
+				      qno--;
+				      
+				       document.getElementById("b1").disabled = false;
+		      document.getElementById("p1").innerHTML = questions[qno];
+		       var option = options[qno].split("^^");
+                      for(i = 0; i<4; i++)
+		      {
+		      var x = document.createElement("INPUT");
+		      x.setAttribute("type", "radio");
+		      x.setAttribute("onclick", "sessionStorage.setItem('"+qno+"', '"+i+"')");
+		      x.setAttribute("name", "rbutton");
+		      var y = document.createElement("INPUT");
+		      y.setAttribute("type", "label");
+				      y.setAttribute("value", option[i]);
+				         if(sessionStorage.getItem(qno) != "null" && sessionStorage.getItem(qno) == i)
+				      {
+				      x.setAttribute("checked", "true");
+				      }
+		      document.getElementById("p2").appendChild(x);
+		      document.getElementById("p2").appendChild(y);
+				   
+				      }
+				     
+      if(qno == 0)
+      {
+      document.getElementById("b2").disabled = true;
+      }
+      }
+
+      
+      function fetchQuestions()
+				      {
+				      document.getElementById("b1").disabled = true;
+				      document.getElementById("b2").disabled = true;
+				      document.getElementById("end").disabled = true;
+		      var xmlhttp = new XMLHttpRequest();
+		      xmlhttp.onreadystatechange = function()
+      {
+      if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+      {
+		      questions = xmlhttp.responseText.split("@@");
+		      
+      }
+      }
+      xmlhttp.open("GET", "Temp337", true);
+      xmlhttp.send();
+      }
+
+      
+      function fetchOptions()
+      {
+      sessionStorage.setItem("1", "6");
+      sessionStorage.setItem("2", "6");
+      sessionStorage.setItem("3", "6");
+      sessionStorage.setItem("4", "6");
+      sessionStorage.setItem("5", "6");
+      sessionStorage.setItem("6", "6");
+      sessionStorage.setItem("7", "6");
+      sessionStorage.setItem("8", "6");
+      sessionStorage.setItem("9", "6");
+      sessionStorage.setItem("0", "6");
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function()
+      {
+      if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+				      {
+				     options = xmlhttp.responseText.split("@@");
+		            }
+      }
+      xmlhttp.open("GET", "Temp338", true);
+      xmlhttp.send();
+      }
+      
+
+      function check()
+      {
+				      var email = sessionStorage.getItem("email");
+				      var here = sessionStorage.getItem("here");
+				      if(here != null)
+				      {
+				      alert("Sorry! Open the Site in some other Tab!");
+				      }
+      if(email == null)
+      {
+      alert("No Hacking Please!");
+      window.open("error.html", "_self");
+      }
+      }
+
+		      var answers = new Array();
+		      function submit()
+				      {
+				      var email1 = sessionStorage.getItem("email");
+				      alert("Submitting!");
+		      for(i = 0; i<10; i++)
+				       {
+				       answers.push(sessionStorage.getItem(i));
+				       }
+				       var ans = new String();
+				       for(i = 0; i<10; i++)
+							{
+							ans += answers[i];
+							}
+				       var xmlhttp = new XMLHttpRequest();
+				       xmlhttp.onreadystatechange = function()
+				       {
+				       if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+				       {
+							window.open("finish.html", "_self");
+							sessionStorage.removeItem("email");
+							alert(xmlhttp.responseText);
+							}
+				       }
+				       xmlhttp.open("GET", "Temp339?ans="+ans+"&email="+email1, true);
+				       xmlhttp.send();
+				       }
+		      
+      
+    </script>
+    
+    
+    <body onload = "check();fetchQuestions(); fetchOptions();">
+      <div class="container_12">
+			<header>
+				<div class="banner1 grid_4">
+				</div>
+				<div class="banner2 grid_4">
+				</div>
+				<div class="banner3 grid_4">
+				</div>
+			</header>
+			<div class="grid_12">
+				<ul class="lists">
+					<li>
+						Time Remaining : <p id="demo"></p>
+					</li>
+					<li>
+						<button type = "button" id = "b3" onclick = "now();  var myVar = setInterval(myTimer, 1000);">Start</button>	
+					</li>					
+				</ul>
+				<ul class="lists2">
+					<li>
+						<h2><u><font color = "black">Question</font></u></h2>
+					</li>
+					<li>
+						<p id = "p1"></p>
+					</li>
+					<li>
+						<h2><u><font color = "black">Options</font></u></h2>
+					</li>
+					<li>
+						<p id = "p2"></p>
+					</li>					
+				</ul>
+				<ul class="lists3">
+					<li>
+						<button type = "button" id = "b2" onclick = "prev();">Previous</button>
+					</li>
+					<li>
+						<button type = "button" id = "b1" onclick = "next();">Next</button>
+					</li>
+					<li>
+						<button type = "button" id = "end" onclick = "submit();">Submit</button>
+					</li>				
+				</ul>
+			</div>
+		</div>      	 
+	</body>
+</html>

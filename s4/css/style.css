@@ -1,0 +1,79 @@
+.banner1{
+	background: url(../img/java.jpg) no-repeat;
+	width: 320px;
+	height: 150px;
+	clear: left;
+}
+
+.banner2{
+	background: url(../img/quiz.png) no-repeat;
+	width: 320px;
+	height: 150px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.banner3{
+	background: url(../img/oracle.png) no-repeat;
+	width: 320px;
+	height: 150px;
+}
+
+header{
+	border-bottom: 20px;
+	border-top: 20px;
+}
+
+.lists li{
+	list-style: none;
+	display: inline-block;
+	padding-top: 30px;
+	text-decoration: none;
+	color: #1874cd;
+	font-size: 20px;
+	clear: both;
+	margin-left: 0px;
+	font-weight: bolder;
+}
+
+.lists,.lists3{
+	text-align: center;
+}
+
+.lists2 li{
+	list-style: none;
+	padding-top: 10px;
+	text-decoration: none;
+	color: #1874cd;
+	font-size: 20px;
+	clear: both;
+	margin-left: 0px;
+	font-weight: bolder;
+}
+
+.lists3 li{
+	list-style: none;
+	display: inline-block;
+	padding-top: 10px;
+	text-decoration: none;
+	color: #1874cd;
+	font-size: 20px;
+	clear: both;
+	margin-left: 0px;
+	font-weight: bolder;
+	padding-right: 30px;
+}
+
+button{
+	background: #1874cd;
+	padding: 4px;
+	color: white;
+	font-weight: bold;
+	border-color: black;
+	border: thin;
+}
+
+button:hover{
+	color: black;
+}

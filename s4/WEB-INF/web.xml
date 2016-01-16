@@ -1,0 +1,38 @@
+<web-app>
+  <servlet>
+    <servlet-name>Temp336</servlet-name>
+    <servlet-class>Temp336</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Temp336</servlet-name>
+    <url-pattern>/Temp336</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Temp337</servlet-name>
+    <servlet-class>Temp337</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Temp337</servlet-name>
+    <url-pattern>/Temp337</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Temp338</servlet-name>
+    <servlet-class>Temp338</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Temp338</servlet-name>
+    <url-pattern>/Temp338</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Temp339</servlet-name>
+    <servlet-class>Temp339</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Temp339</servlet-name>
+    <url-pattern>/Temp339</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

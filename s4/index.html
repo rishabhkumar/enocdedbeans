@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Info</title>
+    <link rel="stylesheet" type="text/css" href="css/style2.css">
+    <script>
+      function submit()
+      {
+      var name = document.getElementById("i1").value;
+      var phone = document.getElementById("i2").value;
+      var email = document.getElementById("i3").value;
+      var team = document.getElementById("i4").value;
+      var name2 = document.getElementById("i5").value;
+      if(name == null || phone == null || email == null || team == null)
+      {
+      return;
+      }
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function()
+      {
+      if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+      {
+      if(xmlhttp.responseText == "1")
+      {
+      alert("Done! Thank You for Registration");
+      sessionStorage.setItem("email", email);
+      window.open("quiz.html", "_self");
+      }
+      else
+      {
+      alert("This Team and E-Mail is already registered!");
+      }
+      }
+      }
+      xmlhttp.open("GET", "Temp336?name="+name+"&phone="+phone+"&email="+email+"&team="+team+"&name2="+name2, true);
+      xmlhttp.send();
+      }
+    </script>
+  </head>
+  <body>
+    <div class="block">
+      <h1>Enter Your Details</h1>
+      <ul class="list">
+        <li><h2>Team Name : <input type = "text" placeholder = "(Max. 15 char)" id = "i4"></h2></li>
+        <li><h2>1st Member : <input type = "text" placeholder = "Your Name" id = "i1"></h2></li>
+        <li><h2>2nd Member(Optional) : <input type = "text" placeholder = "Member Name" id = "i5"></h2></li>
+        <li><h2>Mobile : <input type = "text" placeholder = "For Contacting" id = "i2"></h2></li>
+        <li><h2>E-Mail : <input type = "text" placeholder = "For Contacting" id = "i3"></h2></li>
+        <li><h2><button type = "button" onclick = "submit()">Submit</button></h2></li>
+      </ul>
+    </div>
+  </body>
+  </html>
